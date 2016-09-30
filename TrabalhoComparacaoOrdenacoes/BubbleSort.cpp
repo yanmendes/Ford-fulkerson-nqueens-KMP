@@ -12,6 +12,12 @@ string BubbleSort::getName(){
     return "Bubble Sort";
 };
 
+/**
+ * Bubble Sort
+ *
+ * @param A (int*) Array a ser ordenado
+ * @param n (int)  Número de elementos do arranjo
+ */
 void BubbleSort::sortAlg(int * A, int n){
     for(int i = 0; i < n; i++){
         for(int j = i + 1; j < n; j++){

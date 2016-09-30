@@ -8,6 +8,8 @@
 
 #include "Helper.hpp"
 
+using namespace std;
+
 /**
  * Método que retorna o maior elemento (absoluto) de um vetor
  *
@@ -27,3 +29,21 @@ int Helper::getMax(int * A, int n)
     return max;
 }
 
+list<string> Helper::getFilesInDirectory(string directory)
+{
+    list<string> files;
+    
+    DIR * diretorio;
+    struct dirent * entry;
+    
+    if((diretorio = opendir(directory.c_str()))){
+        while((entry = readdir(diretorio))){
+            if (string(entry->d_name).find(".txt") != string::npos || string(entry->d_name).find(".rtf") != string::npos) {
+                files.push_front(directory + entry->d_name);
+            }
+        }
+        closedir(diretorio);
+    }
+    
+    return files;
+}

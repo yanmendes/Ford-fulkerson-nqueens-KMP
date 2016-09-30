@@ -12,6 +12,12 @@ string InsertionSort::getName(){
     return "Insertion Sort";
 };
 
+/**
+ * Insertion Sort
+ *
+ * @param A (int*) Array a ser ordenado
+ * @param n (int)  Número de elementos do arranjo
+ */
 void InsertionSort::sortAlg(int * A, int n){
     int i, j, key;
     

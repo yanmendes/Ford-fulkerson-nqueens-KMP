@@ -16,10 +16,18 @@
 #include <string>
 #include <algorithm>
 #include <cmath>
+#include <list>
+#include <stdlib.h>
+#include <cstdlib>
+#include <dirent.h>
+#include <cwchar>
+#include <time.h>
+#include <cstring>
 
 class Helper{
 public:
     int getMax(int * A, int n);
+    list<string> getFilesInDirectory(string directory);
 };
 
 #endif /* Helper_hpp */

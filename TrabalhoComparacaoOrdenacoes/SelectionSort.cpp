@@ -12,6 +12,12 @@ string SelectionSort::getName(){
     return "Selection Sort";
 };
 
+/**
+ * Selection Sort
+ *
+ * @param A (int*) Array a ser ordenado
+ * @param n (int)  Número de elementos do arranjo
+ */
 void SelectionSort::sortAlg(int * A, int n){
     int min;
     
