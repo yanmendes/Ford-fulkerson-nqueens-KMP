@@ -24,6 +24,8 @@
 #include <time.h>
 #include <cstring>
 
+using namespace std;
+
 class Helper{
 public:
     int getMax(int * A, int n);

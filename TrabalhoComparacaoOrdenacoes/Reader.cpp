@@ -12,12 +12,12 @@
  *@param A (int *) instância do arranjo
  *@return int tamanho do arranjo
 **/
-int Reader::read(int * A){
+int Reader::read(string fileName, int * A){
     int n, i = 0;
     string line;
     fstream file;
     
-    file.open(this->_fileName);
+    file.open(fileName);
     
     file >> n;
     

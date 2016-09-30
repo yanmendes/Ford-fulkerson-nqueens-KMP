@@ -14,11 +14,8 @@
 using namespace std;
 
 class Reader{
-private:
-    string _fileName;
 public:
-    Reader(string fileName) {this->_fileName = fileName;};
-    int read(int * A);
+    int read(string file, int * A);
 };
 
 #endif /* Reader_hpp */

@@ -18,12 +18,14 @@
 #include "QuickSort.hpp"
 
 bool debug            = false;
-string inputFolder    = "", outputFolder = "";
+string inputFolder    = "";
 list<string> inputFiles;
 int partitionMethod   = 1;
-Reader * r;
+Reader * r = new Reader();
 int * A;
 SortAlgorithm * algorithm;
+string instance;
+time_t currentTime;
 
 static void usage(){
     cout << "Usage:\n" <<
@@ -32,6 +34,7 @@ static void usage(){
     "    -h                     Show this help\n" <<
     "    --debug                Print Shuffled Vector before the sorted one\n" <<
     "    --inputFolder=value    Path to the input folder\n" <<
+    "    -i=value               Instance description\n" <<
     "    --partition=value      When using quick sort, choose the partition method [1: Random, 2: First and last, 3: First and middle] \n" <<
     "    --debug                Print Shuffled Vector before and after sort\n\n" <<
     "Algorithm:\n" <<
@@ -62,12 +65,14 @@ int processArgs(int argc, const char * argv[]){
         if (!strcmp(argv[argInd], "-h")) {
             usage();
             return 2;
-        } else if (!strncmp(argv[argInd], "--inputFolder=", 6)) {
-            inputFolder  = &argv[argInd][6];
+        } else if (!strncmp(argv[argInd], "--inputFolder=", 14)) {
+            inputFolder  = &argv[argInd][14];
         } else if (!strcmp(argv[argInd], "--debug")) {
             debug = true;
-        } else if (!strncmp(argv[argInd], "--partition=", 6)) {
-            partitionMethod = atoi(&argv[argInd][6]);
+        } else if (!strncmp(argv[argInd], "--partition=", 12)) {
+            partitionMethod = atoi(&argv[argInd][12]);
+        } else if (!strncmp(argv[argInd], "-i=", 3)) {
+            instance = &argv[argInd][3];
         }
     }
     
@@ -106,13 +111,56 @@ int processArgs(int argc, const char * argv[]){
     return 0;
 }
 
+void printArray(int * A, int n, fstream *outputFile){
+    for(int i = 0; i < n; ++i){
+        *outputFile << A[i] << endl;
+    }
+}
+
 int main(int argc, const char * argv[]) {
     int errors;
     
     if((errors = processArgs(argc, argv)))
         return errors;
-
-    delete [] A;
+    
+    cout << "Selected Algorithm: " << algorithm->getName() << endl;
+    while(!inputFiles.empty()){
+        string file = &inputFolder.back();
+        inputFolder.pop_back();
+        int n = r->read(file, A);
+        
+//        string outputFileName = regex_replace(file, ".txt", "_output.txt");
+        
+        fstream outputFile;
+        outputFile.open(inputFolder + "/output/" + "tetas.txt");
+        
+        outputFile << "Done reading file: " << file << "@ " << time(&currentTime) << endl;
+        outputFile << "Instance identifier: " << instance << endl << endl;
+        outputFile << "Array Size: " << n << endl << endl;
+        
+        if(debug){
+            outputFile << "########BEGINING DEBUG########" << endl;
+            outputFile << "########SHUFFLED ARRAY########" << endl;
+            printArray(A, n, &outputFile);
+        }
+        
+        clock_t before_sort = clock();
+        algorithm->sort(A, n);
+        clock_t after_sort  = clock();
+        
+        if(debug){
+            outputFile << "########SORTED ARRAY########" << endl;
+            printArray(A, n, &outputFile);
+            outputFile << "########ENDING DEBUG########" << endl;
+        }
+        
+        outputFile << "Operations Count: " << algorithm->getCount() << endl;
+        outputFile << "Time elapsed: " << after_sort - before_sort << algorithm->getCount() << endl;
+        
+        outputFile.close();
+        
+        delete [] A;
+    }
     
     return 0;
 }
