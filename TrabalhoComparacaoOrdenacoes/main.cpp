@@ -135,7 +135,7 @@ int main(int argc, const char * argv[]) {
         outputFile.open(inputFolder + "/output/" + "tetas.txt");
         
         outputFile << "Done reading file: " << file << "@ " << time(&currentTime) << endl;
-        outputFile << "Instance identifier: " << instance << endl << endl;
+        outputFile << "Instance identifier: " << instance << endl;
         outputFile << "Array Size: " << n << endl << endl;
         
         if(debug){
