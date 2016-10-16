@@ -36,7 +36,6 @@ static void usage(){
     "    --inputFolder=value    Path to the input folder\n" <<
     "    -i=value               Instance description\n" <<
     "    --partition=value      When using quick sort, choose the partition method [1: Random, 2: First and last, 3: First and middle] \n" <<
-    "    --debug                Print Shuffled Vector before and after sort\n\n" <<
     "Algorithm:\n" <<
     "    bubble          Bubble Sort\n" <<
     "    counting        Counting Sort\n" <<
