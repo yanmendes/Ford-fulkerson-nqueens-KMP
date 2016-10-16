@@ -15,7 +15,7 @@ using namespace std;
 
 class Reader{
 public:
-    int read(string file, int * A);
+    int read(string file, int** A);
 };
 
 #endif /* Reader_hpp */

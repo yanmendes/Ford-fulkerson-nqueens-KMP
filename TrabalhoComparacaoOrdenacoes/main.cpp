@@ -9,9 +9,9 @@
 #include "Reader.hpp"
 
 //Algorithms
-#include "CountingSort.hpp"
-#include "RadixSort.hpp"
-#include "HeapSort.hpp"
+#include "CountingSort.hpp" ///ERRO
+#include "RadixSort.hpp" ///ERRO
+#include "HeapSort.hpp" ///ERRO
 #include "BubbleSort.hpp"
 #include "InsertionSort.hpp"
 #include "SelectionSort.hpp"
@@ -48,19 +48,19 @@ static void usage(){
 }
 
 int processArgs(int argc, const char * argv[]){
-    
+
     if(argc < 2){
         usage();
         return 2;
     }
-    
+
     int argInd;
-    
+
     for(argInd = 1; argInd < argc; argInd++) {
-        
+
         if (argv[argInd][0] != '-')
             break;
-        
+
         if (!strcmp(argv[argInd], "-h")) {
             usage();
             return 2;
@@ -74,17 +74,19 @@ int processArgs(int argc, const char * argv[]){
             instance = &argv[argInd][3];
         }
     }
-    
+
     if (argInd != argc - 1) {
         usage();
         return 1;
     }
-    
-    if(inputFolder.empty() || (inputFiles = (new Helper)->getFilesInDirectory(inputFolder)).empty()){
+
+    Helper *h = new Helper();
+    inputFiles = h->getFilesInDirectory(inputFolder);
+    if(inputFolder.empty() || inputFiles.empty()){
         cout << "Invalid folder name or empty directory" <<endl;
         return 3;
     }
-    
+
     if(!strcmp (argv[argInd], "bubble")) {
         algorithm = new BubbleSort();
     } else if(!strcmp (argv[argInd], "counting")) {
@@ -106,60 +108,61 @@ int processArgs(int argc, const char * argv[]){
         usage();
         return 4;
     }
-    
+
     return 0;
 }
 
-void printArray(int * A, int n, fstream *outputFile){
+void printArray(int * A, int n, fstream& outputFile){
     for(int i = 0; i < n; ++i){
-        *outputFile << A[i] << endl;
+        outputFile << A[i] << endl;
     }
 }
 
 int main(int argc, const char * argv[]) {
     int errors;
-    
+
     if((errors = processArgs(argc, argv)))
         return errors;
-    
+
     cout << "Selected Algorithm: " << algorithm->getName() << endl;
     while(!inputFiles.empty()){
-        string file = &inputFolder.back();
-        inputFolder.pop_back();
-        int n = r->read(file, A);
-        
+        string file = inputFiles.back();
+        inputFiles.pop_back();
+        int n = r->read(file, &A);
+
 //        string outputFileName = regex_replace(file, ".txt", "_output.txt");
-        
+
         fstream outputFile;
-        outputFile.open(inputFolder + "/output/" + "tetas.txt");
-        
+        //outputFile.open(inputFolder + "/output/" + "tetas.txt");
+        outputFile.open("tetas.txt", fstream::out);
+
         outputFile << "Done reading file: " << file << "@ " << time(&currentTime) << endl;
         outputFile << "Instance identifier: " << instance << endl;
         outputFile << "Array Size: " << n << endl << endl;
-        
+
         if(debug){
             outputFile << "########BEGINING DEBUG########" << endl;
             outputFile << "########SHUFFLED ARRAY########" << endl;
-            printArray(A, n, &outputFile);
+            printArray(A, n, outputFile);
         }
-        
+
         clock_t before_sort = clock();
         algorithm->sort(A, n);
         clock_t after_sort  = clock();
-        
+
         if(debug){
             outputFile << "########SORTED ARRAY########" << endl;
-            printArray(A, n, &outputFile);
+            printArray(A, n, outputFile);
             outputFile << "########ENDING DEBUG########" << endl;
         }
-        
+
         outputFile << "Operations Count: " << algorithm->getCount() << endl;
         outputFile << "Time elapsed: " << after_sort - before_sort << algorithm->getCount() << endl;
-        
+
         outputFile.close();
-        
+
         delete [] A;
     }
-    
+
     return 0;
 }
