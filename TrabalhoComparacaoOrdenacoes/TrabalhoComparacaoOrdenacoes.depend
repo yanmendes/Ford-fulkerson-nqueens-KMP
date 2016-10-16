@@ -1,0 +1,81 @@
+# depslib dependency file v1.0
+1475522224 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/BubbleSort.cpp
+	"BubbleSort.hpp"
+
+1475522224 /home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/BubbleSort.hpp
+	"SortAlgorithm.hpp"
+
+1475522224 /home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/SortAlgorithm.hpp
+	"Helper.hpp"
+
+1475522224 /home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/Helper.hpp
+	<stdio.h>
+	<string>
+	<fstream>
+	<iostream>
+	<string>
+	<algorithm>
+	<cmath>
+	<list>
+	<stdlib.h>
+	<cstdlib>
+	<dirent.h>
+	<cwchar>
+	<time.h>
+	<cstring>
+
+1475522224 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/HeapSort.cpp
+	"HeapSort.hpp"
+
+1475522224 /home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/HeapSort.hpp
+	"SortAlgorithm.hpp"
+
+1476587062 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/Helper.cpp
+	"Helper.hpp"
+
+1475522224 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/InsertionSort.cpp
+	"InsertionSort.hpp"
+
+1475522224 /home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/InsertionSort.hpp
+	"SortAlgorithm.hpp"
+
+1475522224 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/CountingSort.cpp
+	"CountingSort.hpp"
+
+1475522224 /home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/CountingSort.hpp
+	"SortAlgorithm.hpp"
+
+1476624788 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/main.cpp
+	"Reader.hpp"
+	"CountingSort.hpp"
+	"RadixSort.hpp"
+	"HeapSort.hpp"
+	"BubbleSort.hpp"
+	"InsertionSort.hpp"
+	"SelectionSort.hpp"
+	"QuickSort.hpp"
+
+1476623704 /home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/Reader.hpp
+	"Helper.hpp"
+
+1475522224 /home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/RadixSort.hpp
+	"SortAlgorithm.hpp"
+
+1475522224 /home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/SelectionSort.hpp
+	"SortAlgorithm.hpp"
+
+1475522224 /home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/QuickSort.hpp
+	"SortAlgorithm.hpp"
+
+1475522224 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/RadixSort.cpp
+	"RadixSort.hpp"
+
+1476624524 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/Reader.cpp
+	"Reader.hpp"
+
+1475522224 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/SelectionSort.cpp
+	"SelectionSort.hpp"
+
+1476584646 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoComparacaoOrdenacoes/QuickSort.cpp
+	"QuickSort.hpp"
+

@@ -20,30 +20,31 @@ using namespace std;
 int Helper::getMax(int * A, int n)
 {
     int max = abs(A[0]);
-    
+
     for (int i = 1; i < n; i++){
         if(abs(A[i]) > max)
             max = abs(A[i]);
     }
-    
+
     return max;
 }
 
 list<string> Helper::getFilesInDirectory(string directory)
 {
     list<string> files;
-    
+
     DIR * diretorio;
     struct dirent * entry;
-    
+
     if((diretorio = opendir(directory.c_str()))){
         while((entry = readdir(diretorio))){
-            if (string(entry->d_name).find(".txt") != string::npos || string(entry->d_name).find(".rtf") != string::npos) {
-                files.push_front(directory + entry->d_name);
+            if (strstr( entry->d_name, ".in" )) {
+            //if (string(entry->d_name).find(".in") != string::npos) {
+                files.push_front(directory + "/" + entry->d_name);
             }
         }
         closedir(diretorio);
     }
-    
+
     return files;
 }
