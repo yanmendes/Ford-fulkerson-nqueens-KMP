@@ -9,7 +9,7 @@
 #include "Reader.hpp"
 
 //Algorithms
-#include "CountingSort.hpp" ///ERRO
+#include "CountingSort.hpp"
 #include "RadixSort.hpp" ///ERRO
 #include "HeapSort.hpp" ///ERRO
 #include "BubbleSort.hpp"
