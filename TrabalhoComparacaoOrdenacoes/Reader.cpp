@@ -9,8 +9,9 @@
 #include "Reader.hpp"
 
 /**
- *@param A (int *) instância do arranjo
- *@return int tamanho do arranjo
+ * @param A (int *) shuffled array
+ *
+ * @return   int    size of array
 **/
 int Reader::read(string fileName, int** A){
     int n, i = 0;

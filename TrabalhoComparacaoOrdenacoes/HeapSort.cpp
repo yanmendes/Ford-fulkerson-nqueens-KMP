@@ -13,11 +13,11 @@ string HeapSort::getName(){
 };
 
 /**
- * Método que transforma um array em uma heap
+ * Method that heapifies an array
  *
- * @param A (int*) Array a ser ordenado
- * @param i (int)  Posição relativa do array que começará a operação
- * @param n (int)  Número de elementos do arranjo
+ * @param A (int*) Shuffled array
+ * @param i (int)  Position of array that shall be heapified
+ * @param n (int)  Number of elements of said array
  */
 void HeapSort::heapify(int * A, int i, int n){
     
@@ -43,8 +43,8 @@ void HeapSort::heapify(int * A, int i, int n){
 /**
  * Heap Sort
  *
- * @param A (int*) Array a ser ordenado
- * @param n (int)  Número de elementos do arranjo
+ * @param A (int*) Shuffled array
+ * @param n (int)  Number of elements of said array
  */
 void HeapSort::sortAlg(int * A, int n){
     

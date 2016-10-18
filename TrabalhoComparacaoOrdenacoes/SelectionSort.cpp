@@ -15,8 +15,8 @@ string SelectionSort::getName(){
 /**
  * Selection Sort
  *
- * @param A (int*) Array a ser ordenado
- * @param n (int)  Número de elementos do arranjo
+ * @param A (int*) Shuffled array
+ * @param n (int)  Number of elements of said array
  */
 void SelectionSort::sortAlg(int * A, int n){
     int min;

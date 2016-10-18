@@ -11,11 +11,12 @@
 using namespace std;
 
 /**
- * Método que retorna o maior elemento (absoluto) de um vetor
+ * Method that returns the greatest absolute value in the array
  *
- * @param A   (int*) Array a ser ordenado
- * @param n   (int)  Número de elementos do arranjo
- * @return int
+ * @param A (int*) Shuffled array
+ * @param n (int)  Number of elements of said array
+ *
+ * @return   int
  */
 int Helper::getMax(int * A, int n)
 {
@@ -33,17 +34,15 @@ list<string> Helper::getFilesInDirectory(string directory)
 {
     list<string> files;
 
-    DIR * diretorio;
+    DIR * dir;
     struct dirent * entry;
 
-    if((diretorio = opendir(directory.c_str()))){
-        while((entry = readdir(diretorio))){
-            if (strstr( entry->d_name, ".in" )) {
-            //if (string(entry->d_name).find(".in") != string::npos) {
+    if((dir = opendir(directory.c_str()))){
+        while((entry = readdir(dir))){
+            if (strstr( entry->d_name, ".in" ))
                 files.push_front(directory + "/" + entry->d_name);
-            }
         }
-        closedir(diretorio);
+        closedir(dir);
     }
 
     return files;

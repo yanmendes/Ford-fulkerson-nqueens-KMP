@@ -13,6 +13,7 @@
 
 class RadixSort : public SortAlgorithm{
 private:
+    void countingSort(int * A, int n, int exp);
     void sortAlg(int * A, int n);
 public:
     string getName();

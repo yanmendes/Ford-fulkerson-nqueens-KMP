@@ -16,10 +16,10 @@ string QuickSort::getName(){
 };
 
 /**
- * Construtor da classe que leva em consideração qual o método
- * de particionamento será utilizado
+ * Class constructor that requires which version of
+ * the partition algorithm will be executed.
  *
- * @param partitionMethod (int) Índice da função
+ * @param partitionMethod (int)
  */
 QuickSort::QuickSort(int partitionMethod){
     switch (partitionMethod) {
@@ -71,9 +71,9 @@ int QuickSort::biggestRandom(int *A, int start, int end){
 /**
  * Particionamento
  *
- * @param A    (int*) Array a ser ordenado
- * @param start (int) primeira posição deste array
- * @param end   (int) última posição deste array
+ * @param A    (int*)  Shuffled array
+ * @param start (int)  Relative first element of the array
+ * @param end   (int)  Relative last element of the array
  *
  */
 int QuickSort::partition(int * A, int start, int end){
@@ -98,8 +98,8 @@ int QuickSort::partition(int * A, int start, int end){
 /**
  * Quick Sort
  *
- * @param A (int*) Array a ser ordenado
- * @param n (int)  Número de elementos do arranjo
+ * @param A (int*) Shuffled array
+ * @param n (int)  Number of elements of said array
  */
 void QuickSort::sortAlg(int * A, int n){
     this->quickSort(A, 0, n - 1);
@@ -108,9 +108,9 @@ void QuickSort::sortAlg(int * A, int n){
 /**
  * Método recursivo auxiliar à construção do quicksort
  *
- * @param A    (int*) Array a ser ordenado
- * @param start (int)  Posição à esquerda do arranjo
- * @param end   (int)  Posição à direita do arranjo
+ * @param A    (int*)  Shuffled array
+ * @param start (int)  Relative first element of the array
+ * @param end   (int)  Relative last element of the array
  */
 void QuickSort::quickSort(int * A, int start, int end){
     if(start < end){

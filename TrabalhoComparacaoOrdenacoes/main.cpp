@@ -135,11 +135,11 @@ int main(int argc, const char * argv[]) {
         inputFiles.pop_back();
         int n = r->read(file, &A);
 
-//        string outputFileName = regex_replace(file, ".txt", "_output.txt");
+        string outputFileName = file.replace(file.end() - 3, file.end(), "_output.txt");
 
         fstream outputFile;
-        //outputFile.open(inputFolder + "/output/" + "tetas.txt");
-        outputFile.open("tetas.txt", fstream::out);
+        
+        outputFile.open(outputFileName, fstream::out);
 
         outputFile << "Done reading file: " << file << " @ " << time(&currentTime) << endl;
         outputFile << "Algorithm: " << algorithm->getName() << endl;
