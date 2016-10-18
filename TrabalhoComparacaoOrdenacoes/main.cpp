@@ -10,18 +10,20 @@
 
 //Algorithms
 #include "CountingSort.hpp"
-#include "RadixSort.hpp" ///ERRO
+#include "RadixSort.hpp"
 #include "HeapSort.hpp" ///ERRO
 #include "BubbleSort.hpp"
+#include "MergeSort.hpp"
 #include "InsertionSort.hpp"
 #include "SelectionSort.hpp"
-#include "QuickSort.hpp"
+#include "QuickSort.hpp" ///ERRO
 
 bool debug            = false;
 string inputFolder    = "";
-list<string> inputFiles;
 int partitionMethod   = 1;
-Reader * r = new Reader();
+int mergeMethod       = 1;
+Reader * r            = new Reader();
+list<string> inputFiles;
 int * A;
 SortAlgorithm * algorithm;
 string instance;
@@ -35,6 +37,7 @@ static void usage(){
     "    --debug                Print Shuffled Vector before the sorted one\n" <<
     "    --input-folder=value   Path to the input folder\n" <<
     "    -i=value               Instance description\n" <<
+    "    --merge-type=value     When using merge sort, choose the merge algorithm [1: Classic (dynamically allocating an array in the merge method), 2: Alocating beforehand] \n" <<
     "    --partition=value      When using quick sort, choose the partition method [1: First and second, 2: First and middle, 3: Random] \n" <<
     "Algorithm:\n" <<
     "    bubble          Bubble Sort\n" <<
@@ -72,6 +75,8 @@ int processArgs(int argc, const char * argv[]){
             partitionMethod = atoi(&argv[argInd][12]);
         } else if (!strncmp(argv[argInd], "-i=", 3)) {
             instance = &argv[argInd][3];
+        } else if (!strncmp(argv[argInd], "--merge-type=", 13)) {
+            mergeMethod = partitionMethod = atoi(&argv[argInd][13]);
         }
     }
 
@@ -96,7 +101,7 @@ int processArgs(int argc, const char * argv[]){
     } else if(!strcmp (argv[argInd], "insertion")) {
         algorithm = new InsertionSort();
     } else if(!strcmp (argv[argInd], "merge")) {
-//        algorithm = new MergeSort();
+        algorithm = new MergeSort(mergeMethod);
     } else if(!strcmp (argv[argInd], "quick")) {
         algorithm = new QuickSort(partitionMethod);
     } else if(!strcmp (argv[argInd], "radix")) {

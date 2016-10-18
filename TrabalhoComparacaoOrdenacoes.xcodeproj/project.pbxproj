@@ -17,6 +17,7 @@
 		826834931D9EDFC6000C28C1 /* InsertionSort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 826834911D9EDFC6000C28C1 /* InsertionSort.cpp */; };
 		826834961D9EE127000C28C1 /* SelectionSort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 826834941D9EE127000C28C1 /* SelectionSort.cpp */; };
 		826834991D9EE2FE000C28C1 /* QuickSort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 826834971D9EE2FE000C28C1 /* QuickSort.cpp */; };
+		82A299BD1DB6421E005A246C /* MergeSort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82A299BB1DB6421E005A246C /* MergeSort.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +54,8 @@
 		826834951D9EE127000C28C1 /* SelectionSort.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SelectionSort.hpp; sourceTree = "<group>"; };
 		826834971D9EE2FE000C28C1 /* QuickSort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuickSort.cpp; sourceTree = "<group>"; };
 		826834981D9EE2FE000C28C1 /* QuickSort.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = QuickSort.hpp; sourceTree = "<group>"; };
+		82A299BB1DB6421E005A246C /* MergeSort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MergeSort.cpp; sourceTree = "<group>"; };
+		82A299BC1DB6421E005A246C /* MergeSort.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MergeSort.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,16 +89,18 @@
 			isa = PBXGroup;
 			children = (
 				8268347F1D9ED866000C28C1 /* SortAlgorithm.hpp */,
-				824057C31DB549F10019642D /* CountingSort.cpp */,
-				824057C41DB549F10019642D /* CountingSort.hpp */,
-				824057C51DB549F10019642D /* RadixSort.cpp */,
-				824057C61DB549F10019642D /* RadixSort.hpp */,
-				8268348E1D9EDC7D000C28C1 /* HeapSort.cpp */,
-				8268348F1D9EDC7D000C28C1 /* HeapSort.hpp */,
 				8268348B1D9EDBB7000C28C1 /* BubbleSort.cpp */,
 				8268348C1D9EDBB7000C28C1 /* BubbleSort.hpp */,
+				824057C31DB549F10019642D /* CountingSort.cpp */,
+				824057C41DB549F10019642D /* CountingSort.hpp */,
+				8268348E1D9EDC7D000C28C1 /* HeapSort.cpp */,
+				8268348F1D9EDC7D000C28C1 /* HeapSort.hpp */,
 				826834911D9EDFC6000C28C1 /* InsertionSort.cpp */,
 				826834921D9EDFC6000C28C1 /* InsertionSort.hpp */,
+				82A299BB1DB6421E005A246C /* MergeSort.cpp */,
+				82A299BC1DB6421E005A246C /* MergeSort.hpp */,
+				824057C51DB549F10019642D /* RadixSort.cpp */,
+				824057C61DB549F10019642D /* RadixSort.hpp */,
 				826834941D9EE127000C28C1 /* SelectionSort.cpp */,
 				826834951D9EE127000C28C1 /* SelectionSort.hpp */,
 				826834971D9EE2FE000C28C1 /* QuickSort.cpp */,
@@ -168,6 +173,7 @@
 			files = (
 				826834901D9EDC7D000C28C1 /* HeapSort.cpp in Sources */,
 				8268348A1D9EDA8F000C28C1 /* Helper.cpp in Sources */,
+				82A299BD1DB6421E005A246C /* MergeSort.cpp in Sources */,
 				8268348D1D9EDBB7000C28C1 /* BubbleSort.cpp in Sources */,
 				826834991D9EE2FE000C28C1 /* QuickSort.cpp in Sources */,
 				826834961D9EE127000C28C1 /* SelectionSort.cpp in Sources */,
