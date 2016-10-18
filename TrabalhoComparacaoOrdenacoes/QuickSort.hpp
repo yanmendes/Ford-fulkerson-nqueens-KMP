@@ -13,15 +13,20 @@
 
 class QuickSort : public SortAlgorithm {
 private:
+    int pivot;
+    
     void sortAlg(int * A, int n);
     void quickSort(int * A, int start, int end);
     
-    typedef int (QuickSort::*partitionMethod)(int * A, int start, int end);
-    partitionMethod current_partition_method;
+    typedef int (QuickSort::*pivotChoiceMethod)(int * A, int start, int end);
+    pivotChoiceMethod current_pivot_choice_method;
     
-    int random(int * A, int start, int end);
-    int firstLast(int * A, int start, int end);
-    int firstMiddle(int * A, int start, int end);
+    int partition(int * A, int start, int end);
+    
+    /*Métodos de escolha de pivô*/
+    int biggestFirstTwo(int * A, int start, int end);
+    int biggestFirstMiddle(int * A, int start, int end);
+    int biggestRandom(int * A, int start, int end);
     
 public:
     string getName();

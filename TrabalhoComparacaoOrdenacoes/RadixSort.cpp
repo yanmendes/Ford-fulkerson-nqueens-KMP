@@ -21,8 +21,7 @@ string RadixSort::getName(){
  *
  * @param A   (int*) Array a ser ordenado
  * @param n   (int)  Número de elementos do arranjo
- * @param exp (int)  Casa decimal a ser ordenada
- * @return int *
+ * @param exp (int)  Casa decimal a ser ordenad
  */
 void countSort(int * A, int n, int exp)
 {

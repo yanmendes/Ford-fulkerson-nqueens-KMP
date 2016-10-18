@@ -33,9 +33,9 @@ static void usage(){
     "Options:\n" <<
     "    -h                     Show this help\n" <<
     "    --debug                Print Shuffled Vector before the sorted one\n" <<
-    "    --inputFolder=value    Path to the input folder\n" <<
+    "    --input-folder=value   Path to the input folder\n" <<
     "    -i=value               Instance description\n" <<
-    "    --partition=value      When using quick sort, choose the partition method [1: Random, 2: First and last, 3: First and middle] \n" <<
+    "    --partition=value      When using quick sort, choose the partition method [1: First and second, 2: First and middle, 3: Random] \n" <<
     "Algorithm:\n" <<
     "    bubble          Bubble Sort\n" <<
     "    counting        Counting Sort\n" <<
@@ -64,8 +64,8 @@ int processArgs(int argc, const char * argv[]){
         if (!strcmp(argv[argInd], "-h")) {
             usage();
             return 2;
-        } else if (!strncmp(argv[argInd], "--inputFolder=", 14)) {
-            inputFolder  = &argv[argInd][14];
+        } else if (!strncmp(argv[argInd], "--input-folder=", 15)) {
+            inputFolder = &argv[argInd][15];
         } else if (!strcmp(argv[argInd], "--debug")) {
             debug = true;
         } else if (!strncmp(argv[argInd], "--partition=", 12)) {
@@ -96,7 +96,7 @@ int processArgs(int argc, const char * argv[]){
     } else if(!strcmp (argv[argInd], "insertion")) {
         algorithm = new InsertionSort();
     } else if(!strcmp (argv[argInd], "merge")) {
-        //        algorithm = new MergeSort();
+//        algorithm = new MergeSort();
     } else if(!strcmp (argv[argInd], "quick")) {
         algorithm = new QuickSort(partitionMethod);
     } else if(!strcmp (argv[argInd], "radix")) {
@@ -136,7 +136,8 @@ int main(int argc, const char * argv[]) {
         //outputFile.open(inputFolder + "/output/" + "tetas.txt");
         outputFile.open("tetas.txt", fstream::out);
 
-        outputFile << "Done reading file: " << file << "@ " << time(&currentTime) << endl;
+        outputFile << "Done reading file: " << file << " @ " << time(&currentTime) << endl;
+        outputFile << "Algorithm: " << algorithm->getName() << endl;
         outputFile << "Instance identifier: " << instance << endl;
         outputFile << "Array Size: " << n << endl << endl;
 

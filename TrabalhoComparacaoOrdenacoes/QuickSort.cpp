@@ -9,7 +9,10 @@
 #include "QuickSort.hpp"
 
 string QuickSort::getName(){
-    return "Quick Sort";
+    stringstream name;
+    name << "Quick Sort - " << this->pivot;
+    
+    return name.str();
 };
 
 /**
@@ -19,17 +22,77 @@ string QuickSort::getName(){
  * @param partitionMethod (int) Índice da função
  */
 QuickSort::QuickSort(int partitionMethod){
-//    switch (partitionMethod) {
-//        case 1:
-//            this->current_partition_method = &QuickSort::random;
-//            break;
-//        case 2:
-//            this->current_partition_method = &QuickSort::firstLast;
-//            break;
-//        default:
-//            this->current_partition_method = &QuickSort::firstMiddle;
-//            break;
-//    }
+    switch (partitionMethod) {
+        case 1:
+            this->pivot = 1;
+            this->current_pivot_choice_method = &QuickSort::biggestFirstTwo;
+            break;
+        case 2:
+            this->pivot = 2;
+            this->current_pivot_choice_method = &QuickSort::biggestFirstMiddle;
+            break;
+        default:
+            this->pivot = 3;
+            this->current_pivot_choice_method = &QuickSort::biggestRandom;
+            break;
+    }
+}
+
+int QuickSort::biggestFirstTwo(int *A, int start, int end){
+    incrementCount(1);
+    if(A[start] > A[end])
+        return start;
+    
+    return end;
+}
+
+int QuickSort::biggestFirstMiddle(int *A, int start, int end){
+    int middle = floor((start + end) / 2);
+    
+    incrementCount(1);
+    if(A[start] > A[middle])
+        return start;
+    
+    return middle;
+}
+
+
+int QuickSort::biggestRandom(int *A, int start, int end){
+    int firstRandom = (start + rand()) % end;
+    int secondRandom = (start + rand()) % end;
+    
+    incrementCount(1);
+    if(A[firstRandom] > A[secondRandom])
+        return firstRandom;
+    
+    return secondRandom;
+}
+
+/**
+ * Particionamento
+ *
+ * @param A    (int*) Array a ser ordenado
+ * @param start (int) primeira posição deste array
+ * @param end   (int) última posição deste array
+ *
+ */
+int QuickSort::partition(int * A, int start, int end){
+    int i = start, j = end;
+    int pivot = (this->*current_pivot_choice_method)(A, start, end);
+    
+    while (i <= j) {
+        while (A[i] < pivot)
+            i++;
+        while (A[j] > pivot)
+            j--;
+        if (i <= j) {
+            swap(A[i], A[j]);
+            i++;
+            j--;
+        }
+    };
+    
+    return i;
 }
 
 /**
@@ -45,17 +108,19 @@ void QuickSort::sortAlg(int * A, int n){
 /**
  * Método recursivo auxiliar à construção do quicksort
  *
- * @param A     (int*) Array a ser ordenado
+ * @param A    (int*) Array a ser ordenado
  * @param start (int)  Posição à esquerda do arranjo
  * @param end   (int)  Posição à direita do arranjo
  */
 void QuickSort::quickSort(int * A, int start, int end){
-
-    int index = (this->*current_partition_method)(A, start, end);
-
-    if (end < index - 1)
-        quickSort(A, start, index - 1);
-    if (index < end)
-        quickSort(A, start, end);
-
+    if(start < end){
+        int index = partition(A, start, end);
+    
+        incrementCount(1);
+        
+        if (start < index - 1)
+            quickSort(A, start, index - 1);
+        if (index < end)
+            quickSort(A, index, end);
+    }
 }
