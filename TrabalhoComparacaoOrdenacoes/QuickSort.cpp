@@ -11,7 +11,7 @@
 string QuickSort::getName(){
     stringstream name;
     name << "Quick Sort - " << this->pivot;
-    
+
     return name.str();
 };
 
@@ -48,65 +48,41 @@ QuickSort::QuickSort(int partitionMethod){
         default:
             this->pivot = 3;
             this->current_pivot_choice_method = &QuickSort::biggestRandom;
+            mt.seed(chrono::system_clock::now().time_since_epoch().count());
             break;
     }
 }
 
 int QuickSort::biggestFirstTwo(int *A, int start, int end){
     incrementCount(1);
-    if(A[start] > A[end])
+    if(A[start] > A[start+1])
         return start;
-    
-    return end;
+
+    return start + 1;
 }
 
 int QuickSort::biggestFirstMiddle(int *A, int start, int end){
     int middle = floor((start + end) / 2);
-    
+
     incrementCount(1);
     if(A[start] > A[middle])
         return start;
-    
+
     return middle;
 }
 
 
 int QuickSort::biggestRandom(int *A, int start, int end){
-    int firstRandom = (start + rand()) % end;
-    int secondRandom = (start + rand()) % end;
-    
+    uniform_int_distribution<long int> dist(start, end);
+
+    int firstRandom = dist(mt);
+    int secondRandom = dist(mt);
+
     incrementCount(1);
     if(A[firstRandom] > A[secondRandom])
         return firstRandom;
-    
-    return secondRandom;
-}
 
-/**
- * Particionamento
- *
- * @param A    (int*)  Shuffled array
- * @param start (int)  Relative first element of the array
- * @param end   (int)  Relative last element of the array
- *
- */
-int QuickSort::partition(int * A, int start, int end){
-    int i = start, j = end;
-    int pivot = (this->*current_pivot_choice_method)(A, start, end);
-    
-    while (i <= j) {
-        while (A[i] < pivot)
-            i++;
-        while (A[j] > pivot)
-            j--;
-        if (i <= j) {
-            swap(A[i], A[j]);
-            i++;
-            j--;
-        }
-    };
-    
-    return i;
+    return secondRandom;
 }
 
 /**
@@ -128,13 +104,22 @@ void QuickSort::sortAlg(int * A, int n){
  */
 void QuickSort::quickSort(int * A, int start, int end){
     if(start < end){
-        int index = partition(A, start, end);
-    
-        incrementCount(1);
-        
-        if (start < index - 1)
-            quickSort(A, start, index - 1);
-        if (index < end)
-            quickSort(A, index, end);
+        int i = start,
+            j = end,
+            pivot = A[(this->*current_pivot_choice_method)(A, start, end)];
+
+        do {
+            while (A[i] < pivot) ++i;
+            while (A[j] > pivot) --j;
+
+            if(i <= j){
+                swap(A[i], A[j]);
+                ++i;
+                --j;
+            }
+        } while (j > i);
+
+        quickSort(A, start, j);
+        quickSort(A, i, end);
     }
 }

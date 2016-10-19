@@ -11,7 +11,7 @@
 string MergeSort::getName(){
     stringstream name;
     name << "Merge Sort - " << this->allocationMethod;
-    
+
     return name.str();
 };
 
@@ -61,36 +61,33 @@ void MergeSort::sortAlg(int * A, int n){
  */
 void MergeSort::merge(int * A, int start, int end, int mid){
     int i = start, j = mid + 1, k = 0;
-    
+
     int * vetorTemp = new int [end - start + 1];
-    
+
     while(i < mid + 1 || j  < end + 1) {
+        incrementCount(1);
         if (i == mid + 1) {
-            incrementCount(1);
             vetorTemp[k] = A[j];
             j++;
             k++;
         } else if (j == end + 1) {
-            incrementCount(2);
             vetorTemp[k] = A[i];
             i++;
             k++;
         } else if (A[i] < A[j]) {
-            incrementCount(3);
             vetorTemp[k] = A[i];
             i++;
             k++;
         } else {
-            incrementCount(3);
             vetorTemp[k] = A[j];
             j++;
             k++;
         }
     }
-    
+
     for(i = start; i <= end; i++)
         A[i] = vetorTemp[i - start];
-    
+
     delete [] vetorTemp;
 }
 
@@ -104,31 +101,28 @@ void MergeSort::merge(int * A, int start, int end, int mid){
  */
 void MergeSort::adaptedMerge(int * A, int start, int end, int mid, int * Aux){
     int i = start, j = mid + 1, k = 0;
-    
+
     while(i < mid + 1 || j  < end + 1) {
+        incrementCount(1);
         if (i == mid + 1) {
-            incrementCount(1);
             Aux[k] = A[j];
             j++;
             k++;
         } else if (j == end + 1) {
-            incrementCount(2);
             Aux[k] = A[i];
             i++;
             k++;
         } else if (A[i] < A[j]) {
-            incrementCount(3);
             Aux[k] = A[i];
             i++;
             k++;
         } else {
-            incrementCount(3);
             Aux[k] = A[j];
             j++;
             k++;
         }
     }
-    
+
     for(i = start; i <= end; i++){
         incrementCount(1);
         A[i] = Aux[i - start];
@@ -145,13 +139,11 @@ void MergeSort::adaptedMerge(int * A, int start, int end, int mid, int * Aux){
 void MergeSort::mergeSort(int * A, int start, int end){
     if (start < end) {
         int mid = (start + end) / 2;
-        
-        incrementCount(1);
+
         mergeSort(A, start, mid);
-        
-        incrementCount(1);
+
         mergeSort(A, mid + 1, end);
-        
+
         merge(A, start, end, mid);
     }
 }
@@ -167,13 +159,13 @@ void MergeSort::mergeSort(int * A, int start, int end){
 void MergeSort::adaptedMergeSort(int * A, int start, int end, int * Aux){
     if (start < end) {
         int mid = (start + end) / 2;
-        
+
         incrementCount(1);
         adaptedMergeSort(A, start, mid, Aux);
-        
+
         incrementCount(1);
         adaptedMergeSort(A, mid + 1, end, Aux);
-        
+
         adaptedMerge(A, start, end, mid, Aux);
     }
 }

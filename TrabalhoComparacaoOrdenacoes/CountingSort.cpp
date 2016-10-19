@@ -45,6 +45,7 @@ void CountingSort::sortAlg(int * A, int n){
     }
 
     for(int i = 1; i <= sup_range; i++){
+        incrementCount(1);
         C[i] += C[i - 1];
     }
 

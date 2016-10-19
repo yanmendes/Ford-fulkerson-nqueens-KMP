@@ -32,20 +32,19 @@ int HeapSort::getSmallestConstant(string instance_type, int * A, int n){
  * @param i (int)  Position of array that shall be heapified
  */
 void HeapSort::heapify(int * A, int n, int i){
-    
+
     int max = i;
     int filhoEsquerdo = 2 * i + 1;
     int filhoDireito = filhoEsquerdo + 1;
-    
-    incrementCount(1);
+
     if (filhoEsquerdo < n && A[filhoEsquerdo] > A[max])
         max = filhoEsquerdo;
-    
-    incrementCount(1);
+
     if (filhoDireito < n && A[filhoDireito] > A[max]){
         max = filhoDireito;
     }
-    
+
+    incrementCount(1);
     if (max != i){
         swap(A[i], A[max]);
         heapify(A, n, max);
@@ -59,16 +58,14 @@ void HeapSort::heapify(int * A, int n, int i){
  * @param n (int)  Number of elements of said array
  */
 void HeapSort::sortAlg(int * A, int n){
-    
+
     for (int i = n / 2 - 1; i >= 0; i--){
-        incrementCount(1);
         heapify(A, n, i);
     }
-    
+
     for (int i = n - 1; i >= 0; i--) {
-        incrementCount(1);
         swap(A[0], A[i]);
         heapify(A, i, 0);
     }
-    
+
 }

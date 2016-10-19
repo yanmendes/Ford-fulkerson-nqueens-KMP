@@ -15,11 +15,11 @@ string RadixSort::getName(){
 }
 
 string RadixSort::getInferiorLimit(string instance_type){
-    return "O(n + 10)";
+    return "O(wn)";
 }
 
 string RadixSort::getSuperiorLimit(string instance_type){
-    return "O(n + 10)";
+    return "O(wn)";
 }
 
 int RadixSort::getSmallestConstant(string instance_type, int * A, int n){
@@ -46,6 +46,7 @@ void RadixSort::countingSort(int * A, int n, int exp)
         C[i] += C[i - 1];
 
     for (i = n - 1; i >= 0; i--) {
+        incrementCount(1);
         B[C[(A[i]/exp) % 10] - 1] = A[i];
         C[(A[i]/exp) % 10]--;
     }

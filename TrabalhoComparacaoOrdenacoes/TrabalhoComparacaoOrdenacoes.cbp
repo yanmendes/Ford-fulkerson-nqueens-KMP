@@ -11,7 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="--debug --inputFolder=ins radix" />
+				<Option parameters="--debug --input-folder=ins --partition=3 quick" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -43,6 +43,8 @@
 		<Unit filename="Helper.hpp" />
 		<Unit filename="InsertionSort.cpp" />
 		<Unit filename="InsertionSort.hpp" />
+		<Unit filename="MergeSort.cpp" />
+		<Unit filename="MergeSort.hpp" />
 		<Unit filename="QuickSort.cpp" />
 		<Unit filename="QuickSort.hpp" />
 		<Unit filename="RadixSort.cpp" />

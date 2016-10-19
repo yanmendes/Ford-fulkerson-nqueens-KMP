@@ -30,12 +30,12 @@ string instance_type;
 
 string getCurrentTimeStamp(){
     stringstream ss;
-    
+
     time_t t = time(0);
     struct tm * now = localtime( & t );
     ss << now->tm_mday << '/' << now->tm_mon + 1 << '/' <<  now->tm_year + 1900 << ' '
     << now->tm_hour << ':' << now->tm_min << ':' << now->tm_sec << endl;
-    
+
     return ss.str();
 }
 
@@ -124,6 +124,18 @@ int processArgs(int argc, const char * argv[]){
     return 0;
 }
 
+static void set_instance_type(string file)
+{
+    if (file.find("O") != string::npos)
+        instance_type = "ascending";
+    else if (file.find("R") != string::npos)
+        instance_type = "descending";
+    else if (file.find("UD") != string::npos)
+        instance_type = "shuffled with duplicates";
+    else if (file.find("U") != string::npos)
+        instance_type = "shuffled";
+}
+
 void printArray(int * A, int n, fstream& outputFile){
     for(int i = 0; i < n; ++i){
         outputFile << A[i] << endl;
@@ -135,7 +147,7 @@ int main(int argc, const char * argv[]) {
 
     if((errors = processArgs(argc, argv)))
         return errors;
-    
+
     Helper h;
 
     cout << "Selected Algorithm: " << algorithm->getName() << endl;
@@ -144,10 +156,12 @@ int main(int argc, const char * argv[]) {
         inputFiles.pop_back();
         int n = r->read(file, &A);
 
-        file.replace(file.end() - 3, file.end(), "_output.txt");
+        set_instance_type(file);
+
+        file.replace(file.end() - 3, file.end(), "_" + algorithm->getName() + "_output.txt");
 
         fstream outputFile;
-        
+
         outputFile.open(file, fstream::out);
 
         outputFile << "Running test" << " @ " << getCurrentTimeStamp() << endl;
