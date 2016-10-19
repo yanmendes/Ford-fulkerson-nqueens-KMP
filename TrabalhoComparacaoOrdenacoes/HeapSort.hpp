@@ -14,7 +14,7 @@
 class HeapSort : public SortAlgorithm {
 private:
     void sortAlg(int * A, int n);
-    void heapify(int * A, int i, int n);
+    void heapify(int * A, int n, int i);
 public:
     string getName();
 };

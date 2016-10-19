@@ -11,7 +11,7 @@
 //Algorithms
 #include "CountingSort.hpp"
 #include "RadixSort.hpp"
-#include "HeapSort.hpp" ///ERRO
+#include "HeapSort.hpp"
 #include "BubbleSort.hpp"
 #include "MergeSort.hpp"
 #include "InsertionSort.hpp"
@@ -36,7 +36,6 @@ static void usage(){
     "    -h                     Show this help\n" <<
     "    --debug                Print Shuffled Vector before the sorted one\n" <<
     "    --input-folder=value   Path to the input folder\n" <<
-    "    -i=value               Instance description\n" <<
     "    --merge-type=value     When using merge sort, choose the merge algorithm [1: Classic (dynamically allocating an array in the merge method), 2: Alocating beforehand] \n" <<
     "    --partition=value      When using quick sort, choose the partition method [1: First and second, 2: First and middle, 3: Random] \n" <<
     "Algorithm:\n" <<
@@ -47,7 +46,7 @@ static void usage(){
     "    merge           Merge Sort\n" <<
     "    quick           Quick Sort\n" <<
     "    radix           Radix Sort\n" <<
-    "    selection       Selection Sort\n\n";
+    "    selection       Selection Sort\n";
 }
 
 int processArgs(int argc, const char * argv[]){
