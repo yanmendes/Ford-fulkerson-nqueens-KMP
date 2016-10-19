@@ -54,7 +54,6 @@ QuickSort::QuickSort(int partitionMethod){
 }
 
 int QuickSort::biggestFirstTwo(int *A, int start, int end){
-    incrementCount(1);
     if(A[start] > A[start+1])
         return start;
 
@@ -64,7 +63,6 @@ int QuickSort::biggestFirstTwo(int *A, int start, int end){
 int QuickSort::biggestFirstMiddle(int *A, int start, int end){
     int middle = floor((start + end) / 2);
 
-    incrementCount(1);
     if(A[start] > A[middle])
         return start;
 
@@ -78,7 +76,6 @@ int QuickSort::biggestRandom(int *A, int start, int end){
     int firstRandom = dist(mt);
     int secondRandom = dist(mt);
 
-    incrementCount(1);
     if(A[firstRandom] > A[secondRandom])
         return firstRandom;
 
@@ -108,10 +105,14 @@ void QuickSort::quickSort(int * A, int start, int end){
             j = end,
             pivot = A[(this->*current_pivot_choice_method)(A, start, end)];
 
+        // loop stops when i and j met, this happens after |j - i| increments/decrements
+        // + pivot method comparison
+        incrementCount(end - start + 1);
         do {
-            while (A[i] < pivot) ++i;
+            while (A[i] < pivot) ++i
             while (A[j] > pivot) --j;
 
+            incrementCount(1);
             if(i <= j){
                 swap(A[i], A[j]);
                 ++i;
