@@ -14,6 +14,18 @@ string RadixSort::getName(){
     return "Radix Sort";
 }
 
+string RadixSort::getInferiorLimit(string instance_type){
+    return "O(n + 10)";
+}
+
+string RadixSort::getSuperiorLimit(string instance_type){
+    return "O(n + 10)";
+}
+
+int RadixSort::getSmallestConstant(string instance_type, int * A, int n){
+    return floor(this->getCount() / (n + 10));
+}
+
 /**
  * Counting Sort
  *

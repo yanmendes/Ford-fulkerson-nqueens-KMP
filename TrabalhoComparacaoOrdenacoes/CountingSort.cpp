@@ -12,6 +12,18 @@ string CountingSort::getName(){
     return "Counting Sort";
 }
 
+string CountingSort::getInferiorLimit(string instance_type){
+    return "O(n + k)";
+}
+
+string CountingSort::getSuperiorLimit(string instance_type){
+    return "O(n + k)";
+}
+
+int CountingSort::getSmallestConstant(string instance_type, int * A, int n){
+    return floor(this->getCount() / (n + (int) log10((new Helper)->getMax(A, n)) + 1));
+}
+
 /**
  * Counting Sort
  *

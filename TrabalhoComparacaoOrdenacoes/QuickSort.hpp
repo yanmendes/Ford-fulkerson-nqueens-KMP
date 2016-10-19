@@ -30,6 +30,10 @@ private:
     
 public:
     string getName();
+    string getInferiorLimit(string instance_type);
+    string getSuperiorLimit(string instance_type);
+    int    getSmallestConstant(string instance_type, int * A, int n);
+    
     QuickSort(int partitionMethod);
 };
 

@@ -26,8 +26,18 @@ Reader * r            = new Reader();
 list<string> inputFiles;
 int * A;
 SortAlgorithm * algorithm;
-string instance;
-time_t currentTime;
+string instance_type;
+
+string getCurrentTimeStamp(){
+    stringstream ss;
+    
+    time_t t = time(0);
+    struct tm * now = localtime( & t );
+    ss << now->tm_mday << '/' << now->tm_mon + 1 << '/' <<  now->tm_year + 1900 << ' '
+    << now->tm_hour << ':' << now->tm_min << ':' << now->tm_sec << endl;
+    
+    return ss.str();
+}
 
 static void usage(){
     cout << "Usage:\n" <<
@@ -72,8 +82,6 @@ int processArgs(int argc, const char * argv[]){
             debug = true;
         } else if (!strncmp(argv[argInd], "--partition=", 12)) {
             partitionMethod = atoi(&argv[argInd][12]);
-        } else if (!strncmp(argv[argInd], "-i=", 3)) {
-            instance = &argv[argInd][3];
         } else if (!strncmp(argv[argInd], "--merge-type=", 13)) {
             mergeMethod = partitionMethod = atoi(&argv[argInd][13]);
         }
@@ -127,6 +135,8 @@ int main(int argc, const char * argv[]) {
 
     if((errors = processArgs(argc, argv)))
         return errors;
+    
+    Helper h;
 
     cout << "Selected Algorithm: " << algorithm->getName() << endl;
     while(!inputFiles.empty()){
@@ -134,16 +144,21 @@ int main(int argc, const char * argv[]) {
         inputFiles.pop_back();
         int n = r->read(file, &A);
 
-        string outputFileName = file.replace(file.end() - 3, file.end(), "_output.txt");
+        file.replace(file.end() - 3, file.end(), "_output.txt");
 
         fstream outputFile;
         
-        outputFile.open(outputFileName, fstream::out);
+        outputFile.open(file, fstream::out);
 
-        outputFile << "Done reading file: " << file << " @ " << time(&currentTime) << endl;
+        outputFile << "Running test" << " @ " << getCurrentTimeStamp() << endl;
+        outputFile << "########TEST PARAMS########" << endl;
+        outputFile << "Instance identifier: " <<
+            h.explode(file.replace(file.end() - 11, file.end(), ""), '/').back() << endl;
+        outputFile << "Array Size: " << n << endl;
+        outputFile << "Instance type: " << instance_type << endl;
         outputFile << "Algorithm: " << algorithm->getName() << endl;
-        outputFile << "Instance identifier: " << instance << endl;
-        outputFile << "Array Size: " << n << endl << endl;
+        outputFile << "Inferior theorical limit: " << algorithm->getInferiorLimit(instance_type) << endl;
+        outputFile << "Superior theorical limit: " << algorithm->getSuperiorLimit(instance_type) << endl;
 
         if(debug){
             outputFile << "########BEGINING DEBUG########" << endl;
@@ -162,7 +177,8 @@ int main(int argc, const char * argv[]) {
         }
 
         outputFile << "Operations Count: " << algorithm->getCount() << endl;
-        outputFile << "Time elapsed: " << after_sort - before_sort << algorithm->getCount() << endl;
+        outputFile << "Smallest constant: " << algorithm->getSmallestConstant(instance_type, A, n) << endl;
+        outputFile << "Time elapsed: " << after_sort - before_sort << " ms" << endl;
 
         outputFile.close();
 

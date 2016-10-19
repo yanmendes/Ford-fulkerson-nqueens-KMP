@@ -17,6 +17,9 @@ private:
     void heapify(int * A, int n, int i);
 public:
     string getName();
+    string getInferiorLimit(string instance_type);
+    string getSuperiorLimit(string instance_type);
+    int    getSmallestConstant(string instance_type, int * A, int n);
 };
 
 #endif /* HeapSort_hpp */

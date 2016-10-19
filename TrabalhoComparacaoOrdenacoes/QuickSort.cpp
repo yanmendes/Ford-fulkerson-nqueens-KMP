@@ -15,6 +15,20 @@ string QuickSort::getName(){
     return name.str();
 };
 
+string QuickSort::getInferiorLimit(string instance_type){
+    return "O(n log n)";
+}
+
+string QuickSort::getSuperiorLimit(string instance_type){
+    return !strcmp(instance_type.c_str(), "ascending") ? "O(n^2)" : "O(n log n)";
+}
+
+int QuickSort::getSmallestConstant(string instance_type, int * A, int n){
+    return !strcmp(instance_type.c_str(), "ascending") ?
+        floor(this->getCount() / (n * n)) :
+        floor(this->getCount() / (n * log2(n)));
+}
+
 /**
  * Class constructor that requires which version of
  * the partition algorithm will be executed.

@@ -23,6 +23,10 @@ private:
     void adaptedMergeSort(int * A, int start, int end, int * Aux);
 public:
     string getName();
+    string getInferiorLimit(string instance_type);
+    string getSuperiorLimit(string instance_type);
+    int    getSmallestConstant(string instance_type, int * A, int n);
+    
     MergeSort(int allocationMethod);
 };
 

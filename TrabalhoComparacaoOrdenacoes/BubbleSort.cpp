@@ -12,6 +12,18 @@ string BubbleSort::getName(){
     return "Bubble Sort";
 };
 
+string BubbleSort::getInferiorLimit(string instance_type){
+    return !strcmp(instance_type.c_str(), "ascending") ? "O(n)" : "O(n^2)";
+}
+
+string BubbleSort::getSuperiorLimit(string instance_type){
+    return "O(n^2)";
+}
+
+int BubbleSort::getSmallestConstant(string instance_type, int * A, int n){
+    return floor(this->getCount() / (!strcmp(instance_type.c_str(), "ascending") ? n : (n * n)));
+}
+
 /**
  * Bubble Sort
  *

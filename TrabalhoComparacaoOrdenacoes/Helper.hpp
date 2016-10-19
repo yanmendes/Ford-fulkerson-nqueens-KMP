@@ -23,7 +23,10 @@
 #include <cwchar>
 #include <time.h>
 #include <cstring>
-#include <sstream> 
+#include <sstream>
+#include <ctime>
+#include <vector>
+#include <utility>
 
 using namespace std;
 
@@ -31,6 +34,7 @@ class Helper{
 public:
     int getMax(int * A, int n);
     list<string> getFilesInDirectory(string directory);
+    vector<string> explode(std::string const & s, char delim);
 };
 
 #endif /* Helper_hpp */

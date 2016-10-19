@@ -12,6 +12,18 @@ string SelectionSort::getName(){
     return "Selection Sort";
 };
 
+string SelectionSort::getInferiorLimit(string instance_type){
+    return "O(n^2)";
+}
+
+string SelectionSort::getSuperiorLimit(string instance_type){
+    return "O(n^2)";
+}
+
+int SelectionSort::getSmallestConstant(string instance_type, int * A, int n){
+    return floor(this->getCount() / (n * n));
+}
+
 /**
  * Selection Sort
  *

@@ -15,6 +15,18 @@ string MergeSort::getName(){
     return name.str();
 };
 
+string MergeSort::getInferiorLimit(string instance_type){
+    return "O(n log n)";
+}
+
+string MergeSort::getSuperiorLimit(string instance_type){
+    return "O(n log n)";
+}
+
+int MergeSort::getSmallestConstant(string instance_type, int * A, int n){
+    return floor(this->getCount() / (n * log2(n)));
+}
+
 /**
  * Class constructor that requires which version of
  * the MergeSort algorithm will be executed.

@@ -12,6 +12,18 @@ string HeapSort::getName(){
     return "Heap Sort";
 };
 
+string HeapSort::getInferiorLimit(string instance_type){
+    return "O(n log n)";
+}
+
+string HeapSort::getSuperiorLimit(string instance_type){
+    return "O(n log n)";
+}
+
+int HeapSort::getSmallestConstant(string instance_type, int * A, int n){
+    return floor(this->getCount() / (n * log2(n)));
+}
+
 /**
  * Method that heapifies an array
  *
