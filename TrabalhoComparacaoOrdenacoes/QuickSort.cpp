@@ -109,7 +109,7 @@ void QuickSort::quickSort(int * A, int start, int end){
         // + pivot method comparison
         incrementCount(end - start + 1);
         do {
-            while (A[i] < pivot) ++i
+            while (A[i] < pivot) ++i;
             while (A[j] > pivot) --j;
 
             incrementCount(1);
