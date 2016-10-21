@@ -33,16 +33,26 @@ int SelectionSort::getSmallestConstant(string instance_type, int * A, int n){
 void SelectionSort::sortAlg(int * A, int n){
     int min;
 
-    for (int i=0; i < n-1; i++){
+    incrementCount((4 * n) - 3);
+    // i = 0 && i < n - 1
+    // vezes
+    // min = i && j = i + 1 && FIRST j < n && min != i
+    for (int i = 0; i < n-1; i++){
         min = i;
 
-        for (int j=i+1; j < n; j++){
-            incrementCount(1);
+        for (int j = i + 1; j < n; j++){
+            incrementCount(4); // A[j] && A[min] && A[j] < A[min] && j < n
+
             if (A[j] < A[min])
+            {
+                incrementCount(1); // min = j
                 min = j;
+            }
         }
 
-        if (min != i)
+        if (min != i) {
+            incrementCount(5); // A[i] && A[min] && swap(A[i], A[min])
             swap(A[i], A[min]);
+        }
     }
 }

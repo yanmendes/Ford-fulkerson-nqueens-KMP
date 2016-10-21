@@ -31,11 +31,21 @@ int BubbleSort::getSmallestConstant(string instance_type, int * A, int n){
  * @param n (int)  Number of elements of said array
  */
 void BubbleSort::sortAlg(int * A, int n){
-    for(int i = 0; i < n; i++){
-        for(int j = i + 1; j < n; j++){
-            incrementCount(1);
-            if(A[i] > A[j])
-                swap(A[i], A[j]);
+    int ncp = n;
+    bool swapped;
+    incrementCount(1); // int ncp = n
+    do {
+        swapped = false;
+        for(int i = 1; i < ncp-1; ++i) {
+            if(A[i-1] > A[i])
+            {
+                swap(A[i-1], A[i]);
+                swapped = true;
+                incrementCount(6); // A[i-1] && A[i] && swap(A[i], A[j]) && swapped = true
+            }
+            incrementCount(4); // A[i-1] && A[i] && A[i-1] > A[j] && i < n-1
         }
-    }
+        --ncp;
+        incrementCount(4); // swapped = false && i = 1 && i < n-1 while (swap) && --ncp
+    } while (swapped);
 }

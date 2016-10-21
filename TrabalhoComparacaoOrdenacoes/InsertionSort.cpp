@@ -33,15 +33,18 @@ int InsertionSort::getSmallestConstant(string instance_type, int * A, int n){
 void InsertionSort::sortAlg(int * A, int n){
     int i, j, key;
 
+    incrementCount(8*n - 7);
+    // i = 1 && i < n
+    // *
+    // A[i] && key = A[i] && j = i - 1 && FIRST j >= 0 && FIRST A[j] && FIRST key < A[j] && A[j + 1] = key
     for (i = 1; i < n; i++){
         key = A[i];
         j = i - 1;
 
-        incrementCount(1);
-        while ((j >= 0) && (key < A[j])){
-            incrementCount(1);
+        while (j >= 0 && key < A[j]){
             A[j + 1] = A[j];
-            j = j - 1;
+            --j;
+            incrementCount(6); // A[j] && A[j + 1] = A[j] && --J && j >= 0 && A[j] && key < A[j]
         }
 
         A[j + 1] = key;

@@ -32,20 +32,26 @@ int HeapSort::getSmallestConstant(string instance_type, int * A, int n){
  * @param i (int)  Position of array that shall be heapified
  */
 void HeapSort::heapify(int * A, int n, int i){
-
+    incrementCount(3);
     int max = i;
     int filhoEsquerdo = 2 * i + 1;
     int filhoDireito = filhoEsquerdo + 1;
 
-    if (filhoEsquerdo < n && A[filhoEsquerdo] > A[max])
+    incrementCount(4); // filhoEsquerdo < n && A[filhoEsquerdo] && A[max] && A[filhoEsquerdo] > A[max]
+    if (filhoEsquerdo < n && A[filhoEsquerdo] > A[max]) {
+        incrementCount(1);
         max = filhoEsquerdo;
+    }
 
-    if (filhoDireito < n && A[filhoDireito] > A[max]){
+    incrementCount(4); // filhoDireito < n && A[filhoDireito] && A[max] && A[filhoDireito] > A[max]
+    if (filhoDireito < n && A[filhoDireito] > A[max]) {
+        incrementCount(1);
         max = filhoDireito;
     }
 
     incrementCount(1);
-    if (max != i){
+    if (max != i) {
+        incrementCount(6); // A[i] && A[max] && swap(A[i], A[max]) && heapify(A, n, max)
         swap(A[i], A[max]);
         heapify(A, n, max);
     }
@@ -58,11 +64,12 @@ void HeapSort::heapify(int * A, int n, int i){
  * @param n (int)  Number of elements of said array
  */
 void HeapSort::sortAlg(int * A, int n){
-
+    incrementCount(1 + n); // i = n / 2 - 1 && i >= 0 && heapify(A, i, 0)
     for (int i = n / 2 - 1; i >= 0; i--){
         heapify(A, n, i);
     }
 
+    incrementCount(1 + (7 * n)); // i = n - 1 && i >= 0 && A[i] && A[j] && swap(A[i], A[j]) && heapify(A, i, 0)
     for (int i = n - 1; i >= 0; i--) {
         swap(A[0], A[i]);
         heapify(A, i, 0);

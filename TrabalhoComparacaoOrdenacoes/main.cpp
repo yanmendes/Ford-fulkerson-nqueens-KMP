@@ -154,6 +154,7 @@ int main(int argc, const char * argv[]) {
     while(!inputFiles.empty()){
         string file = inputFiles.back();
         inputFiles.pop_back();
+        cout << file << endl;
         int n = r->read(file, &A);
 
         set_instance_type(file);
@@ -193,6 +194,7 @@ int main(int argc, const char * argv[]) {
         outputFile << "Operations Count: " << algorithm->getCount() << endl;
         outputFile << "Smallest constant: " << algorithm->getSmallestConstant(instance_type, A, n) << endl;
         outputFile << "Time elapsed: " << after_sort - before_sort << " ms" << endl;
+        //outputFile << "Time elapsed: " << ((double) (after_sort - before_sort)) / CLOCKS_PER_SECOND << " s" << endl;
 
         outputFile.close();
 
