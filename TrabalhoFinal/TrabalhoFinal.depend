@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1481484256 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/TrabalhoFinal/main.cpp
+	<iostream>
+	"KMP.h"
+
+1481480429 /home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/TrabalhoFinal/KMP.h
+	<string>
+
+1481484215 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/TrabalhoFinal/KMP.cpp
+	"KMP.h"
+
