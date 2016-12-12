@@ -9,3 +9,29 @@
 1481484215 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/TrabalhoFinal/KMP.cpp
 	"KMP.h"
 
+1481484850 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/KMP.cpp
+	"KMP.h"
+
+1481480429 /home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/KMP.h
+	<string>
+
+1481504574 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/main.cpp
+	<iostream>
+	"KMP.h"
+	"SearchTree.h"
+
+1481504648 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/SearchTree.cpp
+	"SearchTree.h"
+
+1481499256 /home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/SearchTree.h
+	<chrono>
+	<stack>
+	"State.h"
+
+1481500857 /home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/State.h
+	<iostream>
+
+1481504675 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/State.cpp
+	<stdlib.h>
+	"State.h"
+
