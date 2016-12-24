@@ -3,9 +3,8 @@
 SearchTree::SearchTree(int n)
 {
     this->n = n;
-    this->expanded = 0;
-    this->searchCpuTime = this->searchWallTime = 0;
-    this->root = new State(n, 0);
+    expanded = 0;
+    root = new State(n, 0);
 
     for (int i = 0; i < n; ++i) root->setQueen(i, -1);
 }
@@ -15,35 +14,21 @@ SearchTree::~SearchTree()
     delete root;
 }
 
-State* SearchTree::search()
+int SearchTree::getExpanded()
 {
-    double startT, finishT;
-    #ifdef __unix
-    timespec startWallTime, finishWallTime;
-    clock_gettime(CLOCK_MONOTONIC, &startWallTime);
-    #else
-    GET_TIME(startT);
-    #endif
-    std::clock_t startCpuTime = std::clock();
-
-    solution = backTracking(root);
-
-    searchCpuTime = (std::clock() - startCpuTime) / (double)CLOCKS_PER_SEC;
-    #ifdef __unix
-    clock_gettime(CLOCK_MONOTONIC, &finishWallTime);
-    searchWallTime = (finishWallTime.tv_sec - startWallTime.tv_sec) + (finishWallTime.tv_nsec - startWallTime.tv_nsec) / 1000000000.0;
-    #else
-    GET_TIME(finishT);
-    searchWallTime = finishT - startT;
-    #endif
-
-    return solution;
+    return expanded;
 }
 
-State* SearchTree::backTracking(State* root)
+std::vector<int*> SearchTree::search()
+{
+    return backTracking(root);
+}
+
+std::vector<int*> SearchTree::backTracking(State* root)
 {
     State* current, *child;
     std::stack<State*> s;
+    std::vector<int*> solutions;
 
     s.push(root);
 
@@ -52,9 +37,13 @@ State* SearchTree::backTracking(State* root)
         current = s.top();
 
         if (current->isSolution())
-            return current;
+        {
+            solutions.push_back(current->getBoard());
+            s.pop();
+            continue;
+        }
 
-        if (child = current->makeNextChild())
+        if ((child = current->makeNextChild()))
         {
             ++expanded;
             s.push(child);
@@ -63,5 +52,5 @@ State* SearchTree::backTracking(State* root)
             s.pop();
     }
 
-    return nullptr;
+    return solutions;
 }

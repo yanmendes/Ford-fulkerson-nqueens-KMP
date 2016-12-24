@@ -34,12 +34,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Edge.cpp" />
+		<Unit filename="Edge.h" />
 		<Unit filename="KMP.cpp" />
 		<Unit filename="KMP.h" />
+		<Unit filename="Network.cpp" />
+		<Unit filename="Network.h" />
 		<Unit filename="SearchTree.cpp" />
 		<Unit filename="SearchTree.h" />
 		<Unit filename="State.cpp" />
 		<Unit filename="State.h" />
+		<Unit filename="Vertex.cpp" />
+		<Unit filename="Vertex.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

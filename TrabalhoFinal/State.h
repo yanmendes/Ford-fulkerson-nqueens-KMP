@@ -11,6 +11,7 @@ class State
 
         void printBoard();
         bool isSolution();
+        int* getBoard();
         State* makeNextChild();
         State* makeChild(int column);
 
@@ -18,11 +19,13 @@ class State
         void setQueen(int line, int column);
 
     private:
-        int n, childCount, depth, gen_column;
+        bool solution;
+        int n, childCount, depth, genColumn;
         int *board;
         State *child;
 
         bool hasConflicts();
+        bool lastQueenHasConflicts();
 };
 
 #endif // STATE_H

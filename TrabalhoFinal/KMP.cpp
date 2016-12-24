@@ -1,16 +1,15 @@
 #include "KMP.h"
 
-/***
-    Retorna a posição do primeiro casamento
-    O algoritmo pode ser alterada para que encontre todos os casamentos de maneira simples
-***/
 int KMP_search(std::string const& text, std::string const& pattern)
 {
     unsigned int n = text.size(),
-        m = pattern.size();
-    int lps[m],
+        m = pattern.size(),
+        count = 0,
         i = 0,
         j = 0;
+    int *lps;
+
+    lps = new int[m];
 
     process_LPS(pattern, lps);
 
@@ -21,7 +20,10 @@ int KMP_search(std::string const& text, std::string const& pattern)
             ++j;
 
             if (m == j)
-                return i - m;
+            {
+                j = lps[j - 1];
+                ++count;
+            }
         }
         else if (j != 0)
             j = lps[j - 1];
@@ -29,13 +31,13 @@ int KMP_search(std::string const& text, std::string const& pattern)
             ++i;
     }
 
-    return -1;
+    return count;
 }
 
 void process_LPS(std::string const& pattern, int *lps)
 {
     unsigned int m = pattern.size();
-    int i = 1,
+    unsigned int i = 1,
         prev_lps_len = 0;
     lps[0] = 0;
 

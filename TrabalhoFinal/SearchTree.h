@@ -1,8 +1,8 @@
 #ifndef SEARCHTREE_H
 #define SEARCHTREE_H
 
-#include <chrono>
 #include <stack>
+#include <vector>
 #include "State.h"
 
 class SearchTree
@@ -11,14 +11,13 @@ class SearchTree
         SearchTree(int n);
         virtual ~SearchTree();
 
-        State* search();
-
+        int getExpanded();
+        std::vector<int*> search();
     private:
         int n, expanded;
-        double searchCpuTime, searchWallTime;
-        State *root, *solution;
+        State *root;
 
-        State* backTracking(State* root);
+        std::vector<int*> backTracking(State* root);
 };
 
 #endif // SEARCHTREE_H

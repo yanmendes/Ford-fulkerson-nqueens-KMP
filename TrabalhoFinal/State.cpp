@@ -6,8 +6,9 @@ State::State(int n, int depth)
     this->n = n;
     this->depth = depth;
 
+    solution = false;
     childCount = 0;
-    gen_column = 0;
+    genColumn = 0;
     board = new int[n];
     child = nullptr;
 }
@@ -37,11 +38,31 @@ bool State::hasConflicts()
     return false;
 }
 
+bool State::lastQueenHasConflicts()
+{
+    if (depth < 2)
+        return false;
+
+    int lastQueenRow = depth - 1;
+
+    for (int i = 0; i < lastQueenRow; ++i)
+        if (board[i] == board[lastQueenRow] || (lastQueenRow - i == abs(board[lastQueenRow] - board[i])))
+            return true;
+
+    if (depth == n)
+        solution = true;
+
+    return false;
+}
+
 bool State::isSolution()
 {
-    if (depth < n) return false;
+    return solution;
+}
 
-    return !hasConflicts();
+int* State::getBoard()
+{
+    return board;
 }
 
 State* State::makeNextChild()
@@ -50,14 +71,14 @@ State* State::makeNextChild()
 
     delete child;
 
-    for (; gen_column < n; ++gen_column)
+    for (; genColumn < n; ++genColumn)
     {
-        newState = makeChild(gen_column);
+        newState = makeChild(genColumn);
 
         if (newState != nullptr)
         {
             child = newState;
-            ++gen_column;
+            ++genColumn;
 
             return newState;
         }
@@ -75,7 +96,7 @@ State* State::makeChild(int column)
 
     child->setQueen(depth, column);
 
-    if (child->hasConflicts())
+    if (child->lastQueenHasConflicts())
     {
         delete child;
         return nullptr;

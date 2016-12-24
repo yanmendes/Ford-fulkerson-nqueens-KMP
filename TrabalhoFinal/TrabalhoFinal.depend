@@ -9,29 +9,67 @@
 1481484215 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/TrabalhoFinal/KMP.cpp
 	"KMP.h"
 
-1481484850 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/KMP.cpp
+1482432395 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/KMP.cpp
 	"KMP.h"
 
-1481480429 /home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/KMP.h
+1482432389 /home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/KMP.h
 	<string>
 
-1481504574 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/main.cpp
+1482583418 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/main.cpp
 	<iostream>
+	<sstream>
+	<chrono>
+	<vector>
 	"KMP.h"
 	"SearchTree.h"
+	"Network.h"
 
-1481504648 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/SearchTree.cpp
+1482251117 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/SearchTree.cpp
 	"SearchTree.h"
 
-1481499256 /home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/SearchTree.h
-	<chrono>
+1482251105 /home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/SearchTree.h
 	<stack>
+	<vector>
 	"State.h"
 
-1481500857 /home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/State.h
+1482172888 /home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/State.h
 	<iostream>
 
-1481504675 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/State.cpp
+1482172922 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/State.cpp
 	<stdlib.h>
 	"State.h"
+
+1482245310 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/Edge.cpp
+	"Edge.h"
+
+1482245315 /home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/Edge.h
+
+1482175573 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/Graph.cpp
+	"Graph.h"
+
+1482175640 /home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/Graph.h
+	<stack>
+	<iostream>
+	<fstream>
+	<unordered_set>
+	<unordered_map>
+	"Vertex.h"
+
+1482245193 /home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/Vertex.h
+	"Edge.h"
+
+1482245189 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/Vertex.cpp
+	"Vertex.h"
+
+1482511767 source:/home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/Network.cpp
+	"Network.h"
+
+1482506761 /home/arthurlorenzi/Trabalho-APA/TrabalhoFinal/Network.h
+	<vector>
+	<queue>
+	<iostream>
+	<fstream>
+	<unordered_set>
+	<unordered_map>
+	"Vertex.h"
 
